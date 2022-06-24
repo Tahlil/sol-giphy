@@ -1,6 +1,7 @@
 import React, {useEffect} from 'react';
 import twitterLogo from './assets/twitter-logo.svg';
 import './App.css';
+import { log } from 'util';
 
 // Constants
 const TWITTER_HANDLE = '_buildspace';
@@ -12,6 +13,10 @@ const App = () => {
       const {solana} = window;
       if(solana.isPhantom){
         console.log("Phantom wallet found.");
+        const response = await solana.connect({
+          onlyIfTrusted: true
+        });
+        console.log("Connected to pubic key:", response.publicKey.toString());
       }
       else{
         console.log("Phantom wallet not found");
