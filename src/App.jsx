@@ -7,6 +7,12 @@ import { log } from 'util';
 const TWITTER_HANDLE = '_buildspace';
 const TWITTER_LINK = `https://twitter.com/${TWITTER_HANDLE}`;
 
+const TEST_GIPHS = [
+  "https://media0.giphy.com/media/fSvqyvXn1M3btN8sDh/giphy.gif?cid=790b76119f81d3107a70341edf8996d711bcc376bd1dc86a&rid=giphy.gif&ct=g",
+  "https://media1.giphy.com/media/AGPBj8UmV5YyI/giphy.gif?cid=ecf05e47wr158rzu6gcwxxasd17xoduuhu5fynsqhlwef3m5&rid=giphy.gif&ct=g",
+  "https://media4.giphy.com/media/8UGGp7rQvfhe63HrFq/giphy.gif?cid=ecf05e47q1yh9i6p06p4l435vjqhbqvesjua12aatymzo9bw&rid=giphy.gif&ct=g"
+]
+
 const App = () => {
   const [walletAddress, setWalletAddress] = useState(null);
   const checkIfWalletIsConnected = async () =>{
@@ -43,6 +49,10 @@ const App = () => {
       onClick={connectWallet}
       Connect to Wallet
     </button>
+  );
+
+  const renderConnectedContainer = () => (
+    
   );
    useEffect(() => {
     const onLoad = async () => {
