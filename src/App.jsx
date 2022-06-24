@@ -15,6 +15,7 @@ const TEST_GIPHS = [
 
 const App = () => {
   const [walletAddress, setWalletAddress] = useState(null);
+  const [inputValue, setInputValue] = useState(null);
   const checkIfWalletIsConnected = async () =>{
     try {
       const {solana} = window;
@@ -58,7 +59,7 @@ const App = () => {
         event.preventDefault();
       }}  
       >
-      <input type="texy" placeholder="Enter GIF link"/>
+      <input type="texy" placeholder="Enter GIF link" value={inputValue} onChange={onInputChange}/>
       <button type="submit" className="cta-button submit-gif-button">Submit</button>
       </form>
     <div className="gif-grid">
