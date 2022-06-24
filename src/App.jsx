@@ -1,7 +1,7 @@
 import React, {useEffect, useState} from 'react';
 import twitterLogo from './assets/twitter-logo.svg';
 import './App.css';
-import { log } from 'util';
+
 
 // Constants
 const TWITTER_HANDLE = '_buildspace';
@@ -36,7 +36,7 @@ const App = () => {
     }
   }
 
-  const connectWallet = () => {
+  const connectWallet = async () => {
     const {solana} = window;
     if(solana) {
       const response = await solana.connect();
@@ -46,9 +46,11 @@ const App = () => {
   }
 
   const renderNotConnectedContainer = () => (
-    <button>
-    className="cta-button connect-wallet-button"
+    <button
+       className="cta-button connect-wallet-button"
       onClick={connectWallet}
+    >
+   
       Connect to Wallet
     </button>
   );
@@ -56,7 +58,9 @@ const App = () => {
   const sendGIF = async() => {
     if(inputValue.length > 0){
       console.log("GIF Links:", inputValue);
+      console.log("Changing GIF List:")
       setGifList([...gifList, inputValue]);
+      console.log(gifList);
       setInputValue("");
     }
     else{
@@ -65,7 +69,9 @@ const App = () => {
   }
   
   const onInputChange = (event) => {
-    const value = event.target;
+    const {value} = event.target;
+    
+    console.log(value);
     setInputValue(value);
   }
   
@@ -77,7 +83,7 @@ const App = () => {
         sendGIF();
       }}  
       >
-      <input type="texy" placeholder="Enter GIF link" value={inputValue} onChange={onInputChange}/>
+      <input type="text" placeholder="Enter GIF link" value={inputValue} onChange={onInputChange}/>
       <button type="submit" className="cta-button submit-gif-button">Submit</button>
       </form>
     <div className="gif-grid">
@@ -102,7 +108,7 @@ const App = () => {
       console.log("Fetching GIF List:");
       setGifList(TEST_GIPHS);
     }
-  }, []);
+  }, [walletAddress]);
   return (
     <div className="App">
       <div className={walletAddress ? "authed-container" : "container"}>
