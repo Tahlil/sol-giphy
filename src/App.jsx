@@ -16,6 +16,7 @@ const TEST_GIPHS = [
 const App = () => {
   const [walletAddress, setWalletAddress] = useState(null);
   const [inputValue, setInputValue] = useState(null);
+  const [gifList, setGifList] = useState([]);
   const checkIfWalletIsConnected = async () =>{
     try {
       const {solana} = window;
@@ -55,6 +56,8 @@ const App = () => {
   const sendGIF = async() => {
     if(inputValue.length > 0){
       console.log("GIF Links:", inputValue);
+      setGifList([...gifList, inputValue]);
+      setInputValue("");
     }
     else{
       console.log("Empty Input");
@@ -78,7 +81,7 @@ const App = () => {
       <button type="submit" className="cta-button submit-gif-button">Submit</button>
       </form>
     <div className="gif-grid">
-      {TEST_GIPHS.map(gif => (
+      {gifList.map(gif => (
       <div className="git-time" key={gif}>
         <img alt="gif" src={gif} />
       </div>
@@ -92,7 +95,14 @@ const App = () => {
     }
     window.addEventListener('load', onload);
     return  () => window.removeEventListener('load', onLoad)
-  }, {})
+  }, {});
+
+  useEffect(() => {
+    if(walletAddress){
+      console.log("Fetching GIF List:");
+      setGifList(TEST_GIPHS);
+    }
+  }, []);
   return (
     <div className="App">
       <div className={walletAddress ? "authed-container" : "container"}>
