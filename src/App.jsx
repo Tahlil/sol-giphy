@@ -52,6 +52,15 @@ const App = () => {
     </button>
   );
 
+  const sendGIF = async() => {
+    if(inputValue.length > 0){
+      console.log("GIF Links:", inputValue);
+    }
+    else{
+      console.log("Empty Input");
+    }
+  }
+  
   const onInputChange = (event) => {
     const value = event.target;
     setInputValue(value);
@@ -62,6 +71,7 @@ const App = () => {
       <form 
       onSubmit={event => {
         event.preventDefault();
+        sendGIF();
       }}  
       >
       <input type="texy" placeholder="Enter GIF link" value={inputValue} onChange={onInputChange}/>
