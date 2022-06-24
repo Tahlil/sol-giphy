@@ -52,6 +52,11 @@ const App = () => {
     </button>
   );
 
+  const onInputChange = (event) => {
+    const value = event.target;
+    setInputValue(value);
+  }
+  
   const renderConnectedContainer = () => (
     <div className="connected-container">
       <form 
