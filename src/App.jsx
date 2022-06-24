@@ -18,6 +18,7 @@ const App = () => {
           onlyIfTrusted: true
         });
         console.log("Connected to pubic key:", response.publicKey.toString());
+        setWalletAddress(response.publicKey.toString());
       }
       else{
         console.log("Phantom wallet not found");
@@ -28,7 +29,12 @@ const App = () => {
   }
 
   const connectWallet = () => {
-    
+    const {solana} = window;
+    if(solana) {
+      const response = await solana.connect();
+      console.log("Connected to pubic key:", response.publicKey.toString());
+      setWalletAddress(response.publicKey.toString());
+    }
   }
 
   const renderNotConnectedContainer = () => (
