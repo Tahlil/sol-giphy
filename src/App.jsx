@@ -52,7 +52,15 @@ const App = () => {
   );
 
   const renderConnectedContainer = () => (
-    
+    <div className="connected-container">
+    <div className="gif-grid">
+      {TEST_GIPHS.map(gif => (
+      <div className="git-time" key={gif}>
+        <img alt="gif" src={gif} />
+      </div>
+      ))}
+    </div>
+    </div>
   );
    useEffect(() => {
     const onLoad = async () => {
@@ -70,6 +78,7 @@ const App = () => {
             View your GIF collection in the metaverse ✨
           </p>
           {!walletAddress && renderNotConnectedContainer()}
+          {walletAddress && renderConnectedContainer()}
         </div>
         <div className="footer-container">
           <img alt="Twitter Logo" className="twitter-logo" src={twitterLogo} />
