@@ -1,13 +1,11 @@
-## Running React on Repl.it
+# Gif Portal APP on Solana
+This is the front end app web3 based GIPHY app to upload gif on [solana blockchain](https://solana.com/).
 
-[React](https://reactjs.org/) is a popular JavaScript library for building user interfaces.
+## Instruction
+1. Run `npm install` at the root of your directory
+2. Run `npm run build` to build the project
+3. Run `npm run serve` to run the project
+4. You can access the site at `http://localhost:5000/`
 
-[Vite](https://vitejs.dev/) is a blazing fast frontend build tool that includes features like Hot Module Reloading (HMR), optimized builds, and TypeScript support out of the box.
-
-Using the two in conjunction is one of the fastest ways to build a web app.
-
-### Getting Started
-- Hit run
-- Edit [App.jsx](#src/App.jsx) and watch it live update!
-
-By default, Replit runs the `dev` script, but you can configure it by changing the `run` field in the `.replit` file.
+# This project is hosted on REPLIT
+`https://gif-portal.tahliltahlil.repl.co`
